@@ -1,0 +1,67 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Entreprise {
+  id         Int      @id @default(autoincrement())
+  nom        String   @db.VarChar(100)
+  email      String   @unique @db.VarChar(100)
+  motDePasse String   @map("mot_de_passe") @db.VarChar(255)
+  siret      String?  @db.VarChar(14)
+  adresse    String?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  missions Mission[]
+
+  @@map("entreprises")
+}
+
+model Chauffeur {
+  id         Int      @id @default(autoincrement())
+  nom        String   @db.VarChar(50)
+  prenom     String   @db.VarChar(50)
+  email      String   @unique @db.VarChar(100)
+  motDePasse String   @map("mot_de_passe") @db.VarChar(255)
+  telephone  String?  @db.VarChar(15)
+  numPermis  String?  @map("num_permis") @db.VarChar(20)
+  typePermis String?  @map("type_permis") @db.VarChar(5)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  disponibilites Disponibilite[]
+
+  @@map("chauffeurs")
+}
+
+model Mission {
+  id           Int      @id @default(autoincrement())
+  titre        String   @db.VarChar(100)
+  date         DateTime @db.Date
+  heure        DateTime @db.Time
+  lieu         String?  @db.VarChar(200)
+  statut       String   @default("en_attente") @db.VarChar(20)
+  entrepriseId Int      @map("entreprise_id")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  entreprise     Entreprise      @relation(fields: [entrepriseId], references: [id])
+  disponibilites Disponibilite[]
+
+  @@map("missions")
+}
+
+model Disponibilite {
+  id           Int      @id @default(autoincrement())
+  statut       String   @default("en_attente") @db.VarChar(20)
+  dateReponse  DateTime @default(now()) @map("date_reponse")
+  missionId    Int      @map("mission_id")
+  chauffeurId  Int      @map("chauffeur_id")
+
+  mission   Mission   @relation(fields: [missionId], references: [id])
+  chauffeur Chauffeur @relation(fields: [chauffeurId], references: [id])
+
+  @@map("disponibilites")
+}
