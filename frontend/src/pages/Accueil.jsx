@@ -1,15 +1,46 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Accueil.css";
 
 function Accueil() {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [role, setRole] = useState(localStorage.getItem("role"));
+
+  function seDeconnecter() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    setToken(null);
+    setRole(null);
+  }
+
+  let lienDashboard = "/entreprise";
+  if (role === "chauffeur") {
+    lienDashboard = "/chauffeur";
+  }
+
+  let boutonsHeader = (
+    <>
+      <Link to="/auth" className="btn-outline">Connexion</Link>
+      <Link to="/auth" className="btn-primary">Inscription</Link>
+    </>
+  );
+
+  if (token) {
+    boutonsHeader = (
+      <>
+        <Link to={lienDashboard} className="btn-outline">Mon espace</Link>
+        <button onClick={seDeconnecter} className="btn-primary btn-deconnexion">
+          Se deconnecter
+        </button>
+      </>
+    );
+  }
+
   return (
     <div className="accueil">
       <header className="accueil-header">
         <span className="logo">DispoTruck</span>
-        <div className="header-buttons">
-          <Link to="/auth" className="btn-outline">Connexion</Link>
-          <Link to="/auth" className="btn-primary">Inscription</Link>
-        </div>
+        <div className="header-buttons">{boutonsHeader}</div>
       </header>
 
       <main className="accueil-main">

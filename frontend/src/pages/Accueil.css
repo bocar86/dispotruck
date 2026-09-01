@@ -93,3 +93,9 @@
   font-size: 13px;
   color: #64748B;
 }
+
+.btn-deconnexion {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
