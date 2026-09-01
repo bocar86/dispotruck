@@ -1,0 +1,95 @@
+.accueil {
+  font-family: Arial, sans-serif;
+  background-color: #F8FAFC;
+  min-height: 100vh;
+}
+
+.accueil-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #1E293B;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-outline {
+  padding: 8px 16px;
+  border: 1px solid #2563EB;
+  color: #2563EB;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  padding: 8px 16px;
+  background-color: #2563EB;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.accueil-main {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.accueil-main h1 {
+  font-size: 28px;
+  color: #1E293B;
+}
+
+.sous-titre {
+  color: #64748B;
+  margin-top: 16px;
+}
+
+.choix-role {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.carte-choix {
+  padding: 16px 32px;
+  border: 1px solid #CBD5E1;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #1E293B;
+}
+
+.fonctionnalites {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.fonctionnalite {
+  flex: 1;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: left;
+}
+
+.fonctionnalite h3 {
+  font-size: 14px;
+  color: #1E293B;
+}
+
+.fonctionnalite p {
+  font-size: 13px;
+  color: #64748B;
+}
