@@ -13,7 +13,7 @@ async function creerMission(req, res) {
       data: {
         titre: titre,
         date: new Date(date),
-        heure: new Date("1970-01-01T" + heure + ":00"),
+        heure: new Date("1970-01-01T" + heure + ":00Z"),
         lieu: lieu,
         entrepriseId: entrepriseId,
       },
@@ -66,7 +66,7 @@ async function modifierMission(req, res) {
       donneesAMettreAJour.date = new Date(date);
     }
     if (heure) {
-      donneesAMettreAJour.heure = new Date("1970-01-01T" + heure + ":00");
+      donneesAMettreAJour.heure = donneesAMettreAJour.heure = new Date("1970-01-01T" + heure + ":00Z");
     }
     if (lieu) {
       donneesAMettreAJour.lieu = lieu;
