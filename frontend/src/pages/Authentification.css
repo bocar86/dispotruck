@@ -86,7 +86,7 @@
 }
 
 .auth-erreur {
-  color: #EF4444;
+  color: #B91C1C;
   font-size: 13px;
   margin: 0;
 }
@@ -108,4 +108,9 @@
   font-size: 13px;
   color: #64748B;
   text-decoration: none;
+}
+
+.logo-img {
+  height: 100px;
+  display: block;
 }

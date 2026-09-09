@@ -1,10 +1,24 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "./Authentification.css";
+import logo from "../assets/logo-dispotruck.png";
+
 
 function Authentification() {
-  const [mode, setMode] = useState("connexion");
-  const [role, setRole] = useState("entreprise");
+  const [searchParams] = useSearchParams();
+
+  let modeInitial = "connexion";
+  if (searchParams.get("mode") === "inscription") {
+    modeInitial = "inscription";
+  }
+
+  let roleInitial = "entreprise";
+  if (searchParams.get("role") === "chauffeur") {
+    roleInitial = "chauffeur";
+  }
+
+  const [mode, setMode] = useState(modeInitial);
+  const [role, setRole] = useState(roleInitial);
 
   const [nom, setNom] = useState("");
   const [prenom, setPrenom] = useState("");
@@ -28,6 +42,7 @@ function Authentification() {
       });
 
       const donnees = await reponse.json();
+      console.log("Response from server:", donnees);
 
       if (!reponse.ok) {
         setErreur(donnees.message);
@@ -40,7 +55,9 @@ function Authentification() {
       if (donnees.role === "entreprise") {
         navigate("/entreprise");
       } else {
+        console.log("Navigating to chauffeur dashboard");
         navigate("/chauffeur");
+        console.log("Navigation to chauffeur dashboard complete");
       }
     } catch (error) {
       setErreur("Impossible de contacter le serveur");
@@ -133,6 +150,7 @@ function Authentification() {
       <input
         type="text"
         placeholder="Nom"
+        aria-label="Nom"
         value={nom}
         onChange={(e) => setNom(e.target.value)}
       />
@@ -146,24 +164,28 @@ function Authentification() {
         <input
           type="text"
           placeholder="Prenom"
+          aria-label="Prenom"
           value={prenom}
           onChange={(e) => setPrenom(e.target.value)}
         />
         <input
           type="text"
           placeholder="Telephone"
+          aria-label="Telephone"
           value={telephone}
           onChange={(e) => setTelephone(e.target.value)}
         />
         <input
           type="text"
           placeholder="Numero de permis"
+          aria-label="Numero de permis"
           value={numPermis}
           onChange={(e) => setNumPermis(e.target.value)}
         />
         <input
           type="text"
           placeholder="Type de permis"
+          aria-label="Type de permis"
           value={typePermis}
           onChange={(e) => setTypePermis(e.target.value)}
         />
@@ -178,12 +200,14 @@ function Authentification() {
         <input
           type="text"
           placeholder="Siret"
+          aria-label="Siret"
           value={siret}
           onChange={(e) => setSiret(e.target.value)}
         />
         <input
           type="text"
           placeholder="Adresse"
+          aria-label="Adresse"
           value={adresse}
           onChange={(e) => setAdresse(e.target.value)}
         />
@@ -199,7 +223,8 @@ function Authentification() {
   return (
     <div className="auth">
       <div className="auth-carte">
-        <span className="logo">DispoTruck</span>
+        <h1 className="sr-only">Connexion ou inscription DispoTruck</h1>
+        <img src={logo} alt="DispoTruck" className="logo-img" />
 
         <div className="auth-onglets">
           <button type="button" className={classeOngletConnexion} onClick={() => setMode("connexion")}>
@@ -228,12 +253,14 @@ function Authentification() {
           <input
             type="email"
             placeholder="Email"
+            aria-label="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="Mot de passe"
+            aria-label="Mot de passe"
             value={motDePasse}
             onChange={(e) => setMotDePasse(e.target.value)}
           />
