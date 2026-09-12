@@ -43,9 +43,11 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+          cache-dependency-path: backend/pnpm-lock.yaml
 
       - name: Installer les dependances
         run: pnpm install --frozen-lockfile
+        working-directory: backend
 
       - name: Appliquer les migrations Prisma
         run: pnpm exec prisma migrate deploy
@@ -72,9 +74,11 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
+          cache-dependency-path: frontend/pnpm-lock.yaml
 
       - name: Installer les dependances
         run: pnpm install --frozen-lockfile
+        working-directory: frontend
 
       - name: Lancer le lint frontend
         run: pnpm run lint
