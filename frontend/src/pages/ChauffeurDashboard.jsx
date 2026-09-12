@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ChauffeurDashboard.css";
+import logo from "../assets/logo-dispotruck.png";
 
 function ChauffeurDashboard() {
   const navigate = useNavigate();
@@ -20,37 +21,47 @@ function ChauffeurDashboard() {
       return;
     }
 
-    chargerDonnees();
-  }, []);
+    let annule = false;
 
-  async function chargerDonnees() {
-    const token = localStorage.getItem("token");
+    async function chargerDonnees() {
+      try {
+        const reponseMissions = await fetch("http://localhost:3000/api/disponibilites/missions", {
+          headers: { Authorization: "Bearer " + token },
+        });
+        const donneesMissions = await reponseMissions.json();
 
-    try {
-      const reponseMissions = await fetch("http://localhost:3000/api/disponibilites/missions", {
-        headers: { Authorization: "Bearer " + token },
-      });
-      const donneesMissions = await reponseMissions.json();
+        const reponseConfirmees = await fetch("http://localhost:3000/api/disponibilites/mes-missions", {
+          headers: { Authorization: "Bearer " + token },
+        });
+        const donneesConfirmees = await reponseConfirmees.json();
 
-      const reponseConfirmees = await fetch("http://localhost:3000/api/disponibilites/mes-missions", {
-        headers: { Authorization: "Bearer " + token },
-      });
-      const donneesConfirmees = await reponseConfirmees.json();
+        if (annule) {
+          return;
+        }
 
-      if (!reponseMissions.ok || !reponseConfirmees.ok) {
-        setErreur("Impossible de charger les missions");
+        if (!reponseMissions.ok || !reponseConfirmees.ok) {
+          setErreur("Impossible de charger les missions");
+          setChargement(false);
+          return;
+        }
+
+        setMissionsDisponibles(donneesMissions);
+        setMissionsConfirmees(donneesConfirmees);
         setChargement(false);
-        return;
+      } catch {
+        if (!annule) {
+          setErreur("Impossible de contacter le serveur");
+          setChargement(false);
+        }
       }
-
-      setMissionsDisponibles(donneesMissions);
-      setMissionsConfirmees(donneesConfirmees);
-      setChargement(false);
-    } catch (error) {
-      setErreur("Impossible de contacter le serveur");
-      setChargement(false);
     }
-  }
+
+    chargerDonnees();
+
+    return () => {
+      annule = true;
+    };
+  }, [navigate]);
 
   async function gererReponse(missionId, statut) {
     const token = localStorage.getItem("token");
@@ -72,7 +83,7 @@ function ChauffeurDashboard() {
 
       const nouvellesReponses = missionsRepondues.concat(missionId);
       setMissionsRepondues(nouvellesReponses);
-    } catch (error) {
+    } catch {
       setErreur("Impossible de contacter le serveur");
     }
   }
@@ -83,7 +94,7 @@ function ChauffeurDashboard() {
     navigate("/");
   }
 
-  let contenuMissionsDisponibles = null;
+  let contenuMissionsDisponibles;
   if (chargement) {
     contenuMissionsDisponibles = <p>Chargement...</p>;
   } else if (missionsDisponibles.length === 0) {
@@ -138,7 +149,7 @@ function ChauffeurDashboard() {
     );
   }
 
-  let contenuMissionsConfirmees = null;
+  let contenuMissionsConfirmees;
   if (chargement) {
     contenuMissionsConfirmees = <p>Chargement...</p>;
   } else if (missionsConfirmees.length === 0) {
@@ -176,7 +187,7 @@ function ChauffeurDashboard() {
   return (
     <div className="dashboard">
       <header className="dashboard-header">
-        <span className="logo">DispoTruck</span>
+        <img src={logo} alt="DispoTruck" className="logo-img" />
         <button onClick={seDeconnecter} className="bouton-deconnexion">
           Se deconnecter
         </button>

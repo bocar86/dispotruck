@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import "./EntrepriseDashboard.css";
+import logo from "../assets/logo-dispotruck.png";
 
 function EntrepriseDashboard() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function EntrepriseDashboard() {
     }
 
     chargerMissions();
-  }, []);
+  }, [navigate]);
 
   async function chargerMissions() {
     const token = localStorage.getItem("token");
@@ -47,7 +48,7 @@ function EntrepriseDashboard() {
 
       setMissions(donnees);
       setChargement(false);
-    } catch (error) {
+    } catch {
       setErreur("Impossible de contacter le serveur");
       setChargement(false);
     }
@@ -80,7 +81,7 @@ function EntrepriseDashboard() {
       setHeure("");
       setLieu("");
       chargerMissions();
-    } catch (error) {
+    } catch {
       setErreur("Impossible de contacter le serveur");
     }
   }
@@ -99,7 +100,7 @@ function EntrepriseDashboard() {
       }
 
       chargerMissions();
-    } catch (error) {
+    } catch {
       setErreur("Impossible de contacter le serveur");
     }
   }
@@ -126,7 +127,7 @@ function EntrepriseDashboard() {
 
       setChauffeursDisponibles(donnees);
       setMissionOuverte(missionId);
-    } catch (error) {
+    } catch {
       setErreur("Impossible de contacter le serveur");
     }
   }
@@ -150,7 +151,7 @@ function EntrepriseDashboard() {
 
       setMissionOuverte(null);
       chargerMissions();
-    } catch (error) {
+    } catch {
       setErreur("Impossible de contacter le serveur");
     }
   }
@@ -161,7 +162,7 @@ function EntrepriseDashboard() {
     navigate("/");
   }
 
-  let contenuListe = null;
+  let contenuListe;
   if (chargement) {
     contenuListe = <p>Chargement...</p>;
   } else if (missions.length === 0) {
@@ -176,7 +177,7 @@ function EntrepriseDashboard() {
             <th>Heure</th>
             <th>Lieu</th>
             <th>Statut</th>
-            <th></th>
+            <th><span className="sr-only">Actions</span></th>
           </tr>
         </thead>
         <tbody>
@@ -192,7 +193,7 @@ function EntrepriseDashboard() {
 
             let panneauChauffeurs = null;
             if (missionOuverte === mission.id) {
-              let contenuPanneau = null;
+              let contenuPanneau;
 
               if (chauffeursDisponibles.length === 0) {
                 contenuPanneau = <p>Aucun chauffeur disponible pour l'instant</p>;
@@ -253,8 +254,10 @@ function EntrepriseDashboard() {
 
   return (
     <div className="dashboard">
+      <h1 className="sr-only">Tableau de bord entreprise</h1>
+
       <header className="dashboard-header">
-        <span className="logo">DispoTruck</span>
+        <img src={logo} alt="DispoTruck" className="logo-img" />
         <button onClick={seDeconnecter} className="bouton-deconnexion">
           Se deconnecter
         </button>
@@ -267,14 +270,26 @@ function EntrepriseDashboard() {
             <input
               type="text"
               placeholder="Titre de la mission"
+              aria-label="Titre de la mission"
               value={titre}
               onChange={(e) => setTitre(e.target.value)}
             />
-            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-            <input type="time" value={heure} onChange={(e) => setHeure(e.target.value)} />
+            <input
+              type="date"
+              aria-label="Date de la mission"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <input
+              type="time"
+              aria-label="Heure de la mission"
+              value={heure}
+              onChange={(e) => setHeure(e.target.value)}
+            />
             <input
               type="text"
               placeholder="Lieu"
+              aria-label="Lieu de la mission"
               value={lieu}
               onChange={(e) => setLieu(e.target.value)}
             />

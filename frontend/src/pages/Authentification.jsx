@@ -59,7 +59,7 @@ function Authentification() {
         navigate("/chauffeur");
         console.log("Navigation to chauffeur dashboard complete");
       }
-    } catch (error) {
+    } catch {
       setErreur("Impossible de contacter le serveur");
     }
   }
@@ -103,7 +103,7 @@ function Authentification() {
 
       setMode("connexion");
       setErreur("");
-    } catch (error) {
+    } catch{
       setErreur("Impossible de contacter le serveur");
     }
   }
