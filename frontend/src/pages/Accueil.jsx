@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Accueil.css";
 import logo from "../assets/logo-dispotruck.png";
 
-
 function Accueil() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [role, setRole] = useState(localStorage.getItem("role"));
@@ -46,15 +45,17 @@ function Accueil() {
       </header>
 
       <main className="accueil-main">
-        <h1>La plateforme qui connecte les entreprises et les chauffeurs</h1>
-        <p className="sous-titre">
-          Plus besoin de chercher dans vos contacts a 5h du matin.
-          DispoTruck vous met en relation instantanement.
-        </p>
+        <div className="hero-overlay">
+          <h1>La plateforme qui connecte les entreprises et les chauffeurs</h1>
+          <p className="sous-titre">
+            Plus besoin de chercher dans vos contacts a 5h du matin.
+            DispoTruck vous met en relation instantanement.
+          </p>
 
-        <div className="choix-role">
-          <Link to="/auth?mode=inscription&role=entreprise" className="carte-choix">Je suis une entreprise</Link>
-          <Link to="/auth?mode=inscription&role=chauffeur" className="carte-choix">Je suis un chauffeur</Link>
+          <div className="choix-role">
+            <Link to="/auth?mode=inscription&role=entreprise" className="carte-choix">Je suis une entreprise</Link>
+            <Link to="/auth?mode=inscription&role=chauffeur" className="carte-choix">Je suis un chauffeur</Link>
+          </div>
         </div>
 
         <div className="fonctionnalites">

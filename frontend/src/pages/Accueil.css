@@ -23,6 +23,7 @@
 .btn-outline {
   padding: 8px 16px;
   border: 1px solid #15803D;
+  background-color: rgba(255, 255, 255, 0.85);
   color: #15803D;
   border-radius: 35px;
   text-decoration: none;
@@ -37,31 +38,34 @@
 }
 
 .accueil-main {
-  max-width: 700px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 40px 48px;
   text-align: center;
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(14px);
+  border: 1px solid #CBD5E1;
+  border-radius: 35px;
 }
 
-.accueil-main h1 {
-  font-size: 32px;
+.hero-overlay h1 {
+  font-size: 36px;
   color: #1E293B;
+  margin-top: 8px;
 }
 
 .sous-titre {
-  color: #64748B;
-  margin-top: 16px;
+  color: #334155;
+  margin-top: 8px;
 }
 
 .choix-role {
   display: flex;
-  gap: 32px;
+  gap: 24px;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .carte-choix {
@@ -76,7 +80,7 @@
 .fonctionnalites {
   display: flex;
   gap: 32px;
-  margin-top: 32px;
+  margin-top: 20px;
   text-align: left;
 }
 
@@ -93,8 +97,9 @@
 }
 
 .fonctionnalite p {
-  font-size: 14px;
+  font-size: 15px;
   color: #1E293B;
+  font-weight: 500;
   margin-top: 6px;
 }
 
