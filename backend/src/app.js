@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
+const logger = require("./middleware/logger");
 
 const prisma = require("./config/prisma");
 
@@ -20,6 +21,10 @@ app.use(
 );
 
 app.use(express.json());
+
+if (process.env.NODE_ENV !== "test") {
+  app.use(logger);
+}
 
 app.get("/health", async (req, res) => {
   try {
