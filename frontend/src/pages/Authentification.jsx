@@ -35,7 +35,7 @@ function Authentification() {
 
   async function gererConnexion() {
     try {
-      const reponse = await fetch("http://localhost:3000/api/auth/login", {
+      const reponse = await fetch("http://localhost:4000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email, motDePasse: motDePasse, role: role }),
@@ -65,7 +65,7 @@ function Authentification() {
   }
 
   async function gererInscription() {
-    let url = "http://localhost:3000/api/auth/register/entreprise";
+    let url = "http://localhost:4000/api/auth/register/entreprise";
     let corps = {
       nom: nom,
       email: email,
@@ -75,7 +75,7 @@ function Authentification() {
     };
 
     if (role === "chauffeur") {
-      url = "http://localhost:3000/api/auth/register/chauffeur";
+      url = "http://localhost:4000/api/auth/register/chauffeur";
       corps = {
         nom: nom,
         prenom: prenom,
@@ -268,8 +268,25 @@ function Authentification() {
           {messageErreur}
 
           <button type="submit" className="auth-bouton">
-            {texteBouton}
-          </button>
+           <svg
+            className="icone-camion"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+           <path d="M10 17h4V5H2v12h3"></path>
+           <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"></path>
+           <circle cx="7.5" cy="17.5" r="2.5"></circle>
+           <circle cx="17.5" cy="17.5" r="2.5"></circle>
+          </svg>
+          {texteBouton}
+        </button>
         </form>
 
         <Link to="/" className="auth-retour">Retour a l'accueil</Link>

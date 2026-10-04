@@ -34,7 +34,7 @@ function EntrepriseDashboard() {
     const token = localStorage.getItem("token");
 
     try {
-      const reponse = await fetch("http://localhost:3000/api/missions", {
+      const reponse = await fetch("http://localhost:4000/api/missions", {
         headers: { Authorization: "Bearer " + token },
       });
 
@@ -60,7 +60,7 @@ function EntrepriseDashboard() {
     const token = localStorage.getItem("token");
 
     try {
-      const reponse = await fetch("http://localhost:3000/api/missions", {
+      const reponse = await fetch("http://localhost:4000/api/missions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ function EntrepriseDashboard() {
     const token = localStorage.getItem("token");
 
     try {
-      const reponse = await fetch("http://localhost:3000/api/missions/" + id, {
+      const reponse = await fetch("http://localhost:4000/api/missions/" + id, {
         method: "DELETE",
         headers: { Authorization: "Bearer " + token },
       });
@@ -114,7 +114,7 @@ function EntrepriseDashboard() {
     }
 
     try {
-      const reponse = await fetch("http://localhost:3000/api/disponibilites/mission/" + missionId, {
+      const reponse = await fetch("http://localhost:4000/api/disponibilites/mission/" + missionId, {
         headers: { Authorization: "Bearer " + token },
       });
 
@@ -137,7 +137,7 @@ function EntrepriseDashboard() {
 
     try {
       const reponse = await fetch(
-        "http://localhost:3000/api/disponibilites/" + disponibiliteId + "/confirmer",
+        "http://localhost:4000/api/disponibilites/" + disponibiliteId + "/confirmer",
         {
           method: "PUT",
           headers: { Authorization: "Bearer " + token },

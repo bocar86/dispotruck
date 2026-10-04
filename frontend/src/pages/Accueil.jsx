@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Accueil.css";
+import logo from "../assets/logo-dispotruck.png";
+
 
 function Accueil() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -20,8 +22,8 @@ function Accueil() {
 
   let boutonsHeader = (
     <>
-      <Link to="/auth" className="btn-outline">Connexion</Link>
-      <Link to="/auth" className="btn-primary">Inscription</Link>
+      <Link to="/auth?mode=connexion" className="btn-outline">Connexion</Link>
+      <Link to="/auth?mode=inscription" className="btn-primary">Inscription</Link>
     </>
   );
 
@@ -39,7 +41,7 @@ function Accueil() {
   return (
     <div className="accueil">
       <header className="accueil-header">
-        <span className="logo">DispoTruck</span>
+        <img src={logo} alt="DispoTruck" className="logo-img" />
         <div className="header-buttons">{boutonsHeader}</div>
       </header>
 
@@ -51,8 +53,8 @@ function Accueil() {
         </p>
 
         <div className="choix-role">
-          <Link to="/auth" className="carte-choix">Je suis une entreprise</Link>
-          <Link to="/auth" className="carte-choix">Je suis un chauffeur</Link>
+          <Link to="/auth?mode=inscription&role=entreprise" className="carte-choix">Je suis une entreprise</Link>
+          <Link to="/auth?mode=inscription&role=chauffeur" className="carte-choix">Je suis un chauffeur</Link>
         </div>
 
         <div className="fonctionnalites">

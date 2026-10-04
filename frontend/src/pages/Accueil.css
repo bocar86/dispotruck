@@ -1,20 +1,18 @@
 .accueil {
-  font-family: Arial, sans-serif;
-  background-color: #F8FAFC;
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(rgba(248, 250, 252, 0.4), rgba(248, 250, 252, 0.4)), url('../assets/hero-truck-vert.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
 .accueil-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 20px 40px;
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 20px;
-  color: #1E293B;
 }
 
 .header-buttons {
@@ -24,17 +22,17 @@
 
 .btn-outline {
   padding: 8px 16px;
-  border: 1px solid #2563EB;
-  color: #2563EB;
-  border-radius: 6px;
+  border: 1px solid #15803D;
+  color: #15803D;
+  border-radius: 35px;
   text-decoration: none;
 }
 
 .btn-primary {
   padding: 8px 16px;
-  background-color: #2563EB;
+  background-color: #15803D;
   color: white;
-  border-radius: 6px;
+  border-radius: 35px;
   text-decoration: none;
 }
 
@@ -42,11 +40,15 @@
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
-  padding: 60px 20px;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .accueil-main h1 {
-  font-size: 28px;
+  font-size: 32px;
   color: #1E293B;
 }
 
@@ -57,45 +59,52 @@
 
 .choix-role {
   display: flex;
-  gap: 16px;
+  gap: 32px;
   justify-content: center;
-  margin-top: 32px;
+  margin-top: 40px;
 }
 
 .carte-choix {
-  padding: 16px 32px;
-  border: 1px solid #CBD5E1;
-  border-radius: 8px;
+  padding: 10px 24px;
+  border: 1px solid #15803D;
+  border-radius: 35px;
+  color: #15803D;
+  font-weight: 600;
   text-decoration: none;
-  color: #1E293B;
 }
 
 .fonctionnalites {
   display: flex;
-  gap: 16px;
-  margin-top: 48px;
+  gap: 32px;
+  margin-top: 32px;
+  text-align: left;
 }
 
 .fonctionnalite {
   flex: 1;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
-  padding: 16px;
-  text-align: left;
 }
 
 .fonctionnalite h3 {
-  font-size: 14px;
-  color: #1E293B;
+  font-size: 13px;
+  color: #15803D;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
 }
 
 .fonctionnalite p {
-  font-size: 13px;
-  color: #64748B;
+  font-size: 14px;
+  color: #1E293B;
+  margin-top: 6px;
 }
 
 .btn-deconnexion {
   border: none;
   cursor: pointer;
   font-family: inherit;
+}
+
+.logo-img {
+  height: 150px;
+  display: block;
 }

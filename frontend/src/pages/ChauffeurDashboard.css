@@ -1,28 +1,22 @@
 .dashboard {
   min-height: 100vh;
-  background-color: #F8FAFC;
-  font-family: Arial, sans-serif;
+  background-image: linear-gradient(rgba(248, 250, 252, 0.4), rgba(248, 250, 252, 0.4)), url('../assets/hero-truck-vert.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .dashboard-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 16px 32px;
-  background-color: white;
-  border-bottom: 1px solid #E2E8F0;
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 18px;
-  color: #1E293B;
 }
 
 .bouton-deconnexion {
   padding: 8px 16px;
   border: 1px solid #CBD5E1;
-  border-radius: 6px;
+  border-radius: 35px;
   background: white;
   cursor: pointer;
 }
@@ -36,9 +30,10 @@
 }
 
 .dashboard-carte {
-  background-color: white;
-  border: 1px solid #E2E8F0;
-  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(226, 232, 240, 0.4);
+  border-radius: 35px;
   padding: 24px;
 }
 
@@ -49,7 +44,7 @@
 }
 
 .dashboard-erreur {
-  color: #EF4444;
+  color: #B91C1C;
   font-size: 13px;
 }
 
@@ -61,18 +56,18 @@
 .missions-table th, .missions-table td {
   text-align: left;
   padding: 10px;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.4);
   font-size: 14px;
 }
 
 .bouton-disponible {
   padding: 6px 12px;
-  background-color: #22C55E;
+  background-color: #15803D;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 35px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 35px;
   margin-right: 6px;
 }
 
@@ -81,7 +76,7 @@
   background-color: #94A3B8;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 35px;
   cursor: pointer;
   font-size: 12px;
 }
@@ -90,4 +85,9 @@
   color: #64748B;
   font-size: 13px;
   font-style: italic;
+}
+
+.logo-img {
+  height: 150px;
+  display: block;
 }

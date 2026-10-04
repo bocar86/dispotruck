@@ -1,24 +1,22 @@
 .auth {
-  min-height: 100vh;
+  height: 97vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F8FAFC;
-  font-family: Arial, sans-serif;
+  background-image: linear-gradient(rgba(248, 250, 252, 0.4), rgba(248, 250, 252, 0.4)), url('../assets/hero-truck-vert.png');
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 3vh;
+  overflow: hidden;
 }
 
 .auth-carte {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(14px);
   border: 1px solid #CBD5E1;
-  border-radius: 12px;
+  border-radius: 35px;
   padding: 32px;
   width: 360px;
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 18px;
-  color: #1E293B;
 }
 
 .auth-onglets {
@@ -38,8 +36,8 @@
 }
 
 .onglet.actif {
-  color: #2563EB;
-  border-bottom: 2px solid #2563EB;
+  color: #15803D;
+  border-bottom: 2px solid #15803D;
   font-weight: bold;
 }
 
@@ -59,16 +57,16 @@
   flex: 1;
   padding: 10px;
   border: 1px solid #CBD5E1;
-  border-radius: 6px;
+  border-radius: 35px;
   background: white;
   color: #1E293B;
   cursor: pointer;
 }
 
 .role.actif {
-  border-color: #2563EB;
-  background-color: #E6F1FB;
-  color: #2563EB;
+  border-color: #15803D;
+  background-color: #DCFCE7;
+  color: #15803D;
   font-weight: bold;
 }
 
@@ -82,7 +80,7 @@
 .auth-form input {
   padding: 10px;
   border: 1px solid #CBD5E1;
-  border-radius: 6px;
+  border-radius: 35px;
 }
 
 .auth-erreur {
@@ -93,12 +91,16 @@
 
 .auth-bouton {
   padding: 10px;
-  background-color: #1E293B;
+  background-color: #15803D;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 35px;
   cursor: pointer;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .auth-retour {
@@ -108,6 +110,15 @@
   font-size: 13px;
   color: #64748B;
   text-decoration: none;
+}
+
+
+.icone-camion {
+  transition: transform 0.2s ease;
+}
+
+.auth-bouton:hover .icone-camion {
+  transform: translateX(4px);
 }
 
 .logo-img {
