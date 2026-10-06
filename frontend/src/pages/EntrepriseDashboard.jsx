@@ -259,7 +259,7 @@ function EntrepriseDashboard() {
       <header className="dashboard-header">
         <img src={logo} alt="DispoTruck" className="logo-img" />
         <button onClick={seDeconnecter} className="bouton-deconnexion">
-          Se deconnecter
+          Se déconnecter
         </button>
       </header>
 

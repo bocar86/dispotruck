@@ -231,7 +231,7 @@ function Authentification() {
             Se connecter
           </button>
           <button type="button" className={classeOngletInscription} onClick={() => setMode("inscription")}>
-            Creer un compte
+            Créer un compte
           </button>
         </div>
 
@@ -289,7 +289,7 @@ function Authentification() {
         </button>
         </form>
 
-        <Link to="/" className="auth-retour">Retour a l'accueil</Link>
+        <Link to="/" className="auth-retour">Retour à l'accueil</Link>
       </div>
     </div>
   );

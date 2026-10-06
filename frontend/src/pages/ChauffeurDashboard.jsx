@@ -189,7 +189,7 @@ function ChauffeurDashboard() {
       <header className="dashboard-header">
         <img src={logo} alt="DispoTruck" className="logo-img" />
         <button onClick={seDeconnecter} className="bouton-deconnexion">
-          Se deconnecter
+          Se déconnecter
         </button>
       </header>
 
@@ -202,7 +202,7 @@ function ChauffeurDashboard() {
         </div>
 
         <div className="dashboard-carte">
-          <h2>Mes missions confirmees</h2>
+          <h2>Mes missions confirmées</h2>
           {contenuMissionsConfirmees}
         </div>
       </div>
